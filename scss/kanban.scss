@@ -1,0 +1,519 @@
+@use './util/index' as m;
+@use './util/variabls' as v;
+@use './util/media-query' as q;
+
+// variable  
+$light: v.$light;
+$dark: v.$dark;
+$c1D3573: v.$c1D3573;
+$cFFD43C: v.$cFFD43C;
+$c171B1E: v.$c171B1E;
+$c717579: v.$c717579;
+$bxs: v.$bxs;
+$cEEEEEE: v.$cEEEEEE;
+$cd7d7d7: v.$cd7d7d7;
+$grn: v.$grn;
+
+// regular css @s
+.kanban-page-wrap {
+    .card-box {
+        @include m.box(1.5rem, $light);
+        box-shadow: $bxs;
+    }
+
+    .kanban-header-banner {
+        .left-txt {
+            h1 {
+                @include m.para(2rem, 700, $c171B1E);
+            }
+
+            h6 {
+                @include m.para(1.25rem, 400, $c717579);
+                margin: 0.8rem 0;
+
+                span {
+                    font-weight: 700;
+                }
+            }
+
+            p {
+                @include m.para(0.9rem, 400, $c171B1E);
+            }
+
+            .d-flex {
+                margin-top: 1.5rem;
+                align-items: center;
+
+                h5 {
+                    @include m.para(1rem, 400, $c171B1E);
+                }
+
+                .progress {
+                    width: 40%;
+                    margin-left: 1rem;
+                    background-color: $cEEEEEE;
+                    border-radius: 4px;
+
+                    .progress-bar {
+                        background-color: $c1D3573;
+                        border-radius: 4px;
+                    }
+                }
+            }
+        }
+
+        .right-txt {
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-end;
+            height: 100%;
+
+            .media {
+                @include m.df(flex-end);
+                text-align: right;
+
+                h5 {
+                    @include m.para(1.15rem, 600, $c171B1E);
+                    margin-bottom: 0.2rem;
+                }
+
+                h6 {
+                    @include m.para(0.9rem, 400, $c717579);
+                }
+
+                a {
+                    display: inline-block;
+                    margin-left: 1.5rem;
+                }
+
+                img {
+                    display: inline-block;
+                    margin-left: 1.5rem;
+                    width: 3.8rem;
+                    height: 3.8rem;
+                    border-radius: 0.675rem;
+                    object-fit: cover;
+                }
+            }
+
+            .bottom-bttns {
+                margin-top: 1rem;
+                @include m.df;
+
+                div {
+                    @include m.df;
+
+                    a.add-bttn {
+                        display: inline-block;
+                        background: #F1EAFF;
+                        border: 1px solid #F1EAFF;
+                        @include m.para(0.9rem, 400, $c171B1E);
+                        border-radius: 4px;
+                        padding: .6rem .7rem;
+                        border-radius: 7px;
+                        transition: all linear .2s;
+                        margin-right: .5rem;
+
+                        i {
+                            margin-right: 0.3rem;
+                        }
+
+                        &:hover {
+                            background-color: $c171B1E;
+                            color: $light;
+                        }
+                    }
+
+                    a.cmnt-bttn {
+                        display: inline-block;
+                        background: transparent;
+                        @include m.para(0.9rem, 400, $c171B1E);
+                        border-radius: 4px;
+                        padding: .6rem .7rem;
+                        border-radius: 7px;
+                        transition: all linear .2s;
+                        border: 1px solid $c171B1E;
+
+                        i {
+                            margin-right: 0.3rem;
+                        }
+
+                        &:hover {
+                            background-color: $c171B1E;
+                            color: $light;
+                        }
+                    }
+                }
+
+                ul {
+                    @include m.df;
+                    margin-left: 1.5rem;
+
+                    li {
+                        img {
+                            width: 1.9rem;
+                            height: 1.9rem;
+                            border-radius: .2rem;
+                            object-fit: cover;
+                        }
+
+                        &:nth-child(2) {
+                            margin-left: -0.4rem;
+                        }
+
+                        &:nth-child(3) {
+                            margin-left: -0.4rem;
+                        }
+
+                        &:nth-child(4) {
+                            margin-left: -0.4rem;
+                        }
+
+                        &:last-child {
+                            margin-left: -0.4rem;
+
+                            span {
+                                width: 1.90rem;
+                                height: 1.90rem;
+                                display: inline-flex;
+                                align-items: center;
+                                justify-content: center;
+                                border-radius: .25rem;
+                                background-color: $c1D3573;
+                                border: 2px solid $light;
+                                @include m.para(0.9rem, 700, $light);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .kanban-list-box {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        margin-top: 2rem;
+        overflow-x: scroll;
+        width: 100%;
+
+        .list-item {
+            min-width: 340px;
+            margin-right: 1.5rem;
+
+            .header {
+                @include m.df(space-between);
+                margin-bottom: 1.5rem;
+
+                h5 {
+                    @include m.para(1.25rem, 700, $c171B1E);
+                }
+
+                a {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 2.5rem;
+                    height: 2.5rem;
+                    border-radius: 6px;
+
+                    i {
+                        font-size: 1rem;
+                        color: $c171B1E;
+                    }
+
+                    &:hover {
+                        background: #F1EAFF;
+                    }
+                }
+            }
+
+            .todo-box {
+                margin-bottom: 1.5rem;
+                cursor: pointer;
+
+                .d-flex {
+                    align-items: center;
+                    justify-content: space-between;
+                    margin-bottom: 1rem;
+
+                    span {
+                        display: inline-block;
+                        @include m.para(0.9rem, 400, $c171B1E);
+
+                        i {
+                            margin-right: 0.4rem;
+                            font-size: 0.7rem;
+                        }
+                    }
+
+                    .grn {
+                        color: $grn
+                    }
+
+                    .ylow {
+                        color: #EAC947
+                    }
+
+                    .d-red {
+                        color: #D0412E
+                    }
+
+                    .red {
+                        color: #FC2E53
+                    }
+
+                    .blu {
+                        color: #5ECFFF
+                    }
+
+                    a {
+                        display: inline-block;
+
+                        i {
+                            font-size: 1.2rem;
+                            color: $c717579;
+                        }
+                    }
+                }
+
+                h6 {
+                    @include m.para(1.15rem, 500, $c171B1E);
+                }
+
+                .progress {
+                    width: 100%;
+                    margin: 1.2rem 0;
+                    background-color: #F1EAFF;
+                    border-radius: 1rem;
+                    height: 7px;
+
+                    .progress-bar {
+                        background-color: $c1D3573;
+                        border-radius: 1rem;
+                    }
+
+                    .grn {
+                        background-color: $grn
+                    }
+
+                    .ylow {
+                        background-color: #EAC947
+                    }
+
+                    .d-red {
+                        background-color: #D0412E
+                    }
+
+                    .red {
+                        background-color: #FC2E53
+                    }
+
+                    .blu {
+                        background-color: #5ECFFF
+                    }
+                }
+
+                .todo-ftr {
+                    @include m.df(space-between);
+
+                    ul {
+                        @include m.df;
+
+                        li {
+                            img {
+                                display: block;
+                                width: 1.7rem;
+                                height: 1.7rem;
+                                border-radius: 4rem;
+                                border: 2px solid $light;
+                            }
+
+                            &:nth-child(2) {
+                                margin-left: -0.5rem;
+                            }
+
+                            &:nth-child(3) {
+                                margin-left: -0.5rem;
+                            }
+
+                            &:nth-child(4) {
+                                margin-left: -0.5rem;
+                            }
+                        }
+                    }
+
+                    p {
+                        @include m.para(0.9rem, 400, $c717579);
+                    }
+                }
+            }
+
+
+        }
+
+        .move-heare-box {
+            background: $cEEEEEE;
+            border: 2px dashed $cd7d7d7;
+            border-radius: 0.9rem;
+            padding: .9rem 1rem;
+            text-align: center;
+
+            p {
+                @include m.para(1rem, 400, $c717579);
+
+                img {
+                    margin-right: 0.4rem;
+                }
+            }
+        }
+    }
+}
+
+
+.kanban-list-box::-webkit-scrollbar {
+    height: 7px;
+}
+
+.kanban-list-box::-webkit-scrollbar-track {
+    background: $cd7d7d7;
+}
+
+.kanban-list-box::-webkit-scrollbar-thumb {
+    background: $c1D3573;
+}
+
+.kanban-list-box::-webkit-scrollbar-thumb:hover {
+    background: $c1D3573;
+}
+
+// regular css @e
+
+
+// ======= responsive css @s
+// small phone device
+@include q.responsive(phone) {
+    .kanban-page-wrap {
+        .card-box {
+            padding: 1rem;
+        }
+
+        .kanban-header-banner {
+            .left-txt {
+                h1 {
+                    font-size: 1.8rem;
+                }
+
+                h6 {
+                    font-size: 1rem;
+                }
+            }
+
+            .right-txt {
+                text-align: left;
+                margin-top: 1rem;
+                justify-content: center;
+                align-items: flex-start;
+
+                .media {
+                    align-items: center;
+                    justify-content: space-between;
+                    text-align: center;
+                    width: 100%;
+                }
+
+                .bottom-bttns {
+                    flex-direction: column;
+                    align-items: flex-start;
+
+                    ul {
+                        margin: 1rem 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// landscape phone device 
+@include q.responsive(landphone) {
+    .kanban-page-wrap {
+        .card-box {
+            padding: 1rem;
+        }
+
+        .kanban-header-banner {
+            .left-txt {
+                h1 {
+                    font-size: 1.8rem;
+                }
+
+                h6 {
+                    font-size: 1rem;
+                }
+            }
+
+            .right-txt {
+                margin-top: 1rem;
+                padding-bottom: 2rem;
+            }
+        }
+
+    }
+}
+
+// tablet device 
+@include q.responsive(tablet) {
+    .kanban-page-wrap {
+        .card-box {
+            padding: 1rem;
+        }
+
+        .kanban-header-banner {
+            .left-txt {
+                h1 {
+                    font-size: 1.8rem;
+                }
+
+                h6 {
+                    font-size: 1rem;
+                }
+            }
+
+            .right-txt {
+                margin-top: 1rem;
+                padding-bottom: 2rem;
+                flex-direction: row-reverse;
+            }
+        }
+
+    } 
+}
+
+// tablet device 
+@include q.responsive(landtablet) {
+    .kanban-page-wrap .kanban-header-banner .right-txt .bottom-bttns{
+        flex-direction: column;
+        align-items: flex-start;
+        ul{
+            margin-left: 0;
+            margin-top: 1rem;
+        }
+    }
+}
+
+// tablet device 
+@include q.responsive(regular) {
+    .kanban-page-wrap .kanban-header-banner .right-txt .bottom-bttns{
+        flex-direction: column;
+        align-items: flex-start;
+        ul{
+            margin-left: 0;
+            margin-top: 1rem;
+        }
+    }
+}
+
+// ======= responsive css @e

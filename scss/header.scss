@@ -1,0 +1,227 @@
+@use './util/index' as m;
+@use './util/variabls' as v;
+@use './util/media-query' as q;
+
+// variable  
+$light: v.$light;
+$dark: v.$dark;
+$c1D3573: v.$c1D3573;
+$cFFD43C: v.$cFFD43C;
+$c171B1E: v.$c171B1E;
+$c717579: v.$c717579;
+$bxs: v.$bxs;
+$cEEEEEE: v.$cEEEEEE;
+$cd7d7d7: v.$cd7d7d7;
+$grn: v.$grn;
+
+// regular css @s
+.header-part {
+    padding: 1.6rem 2rem;
+
+    .header-title {
+        @include m.df;
+
+        a#menu-toggle {
+            display: inline-block;
+            margin-right: 1.5rem;
+            margin-top: 0.4rem;
+
+            i {
+                font-size: 1.4rem;
+                color: $c717579;
+            }
+        }
+
+        h3 {
+            @include m.para(2rem, 700, $c171B1E);
+        }
+    }
+
+    .header-search {
+        position: relative;
+
+        .form-control {
+            background-color: $cEEEEEE;
+            border-radius: 0.675rem;
+            height: 3.25rem;
+            padding-left: 1rem;
+            padding-right: 2.5rem;
+            @include m.para(0.85rem, 400, $c1D3573);
+            border: 0;
+        }
+
+        i {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: .9rem;
+            color: $c717579;
+        }
+    }
+
+    .header-icons {
+        ul {
+            @include m.df;
+
+            li {
+                a {
+                    position: relative;
+                    display: block;
+                    margin-right: 3rem;
+
+                    i {
+                        color: $c717579;
+                        font-size: 1.3rem;
+                    }
+
+                    span {
+                        position: absolute;
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                        @include m.para(0.7rem, 700, $light);
+                        background-color: $c1D3573;
+                        right: -18px;
+                        top: -24px;
+                        width: 1.7rem;
+                        height: 1.7rem;
+                        border-radius: 0.675rem;
+                        border: 1px solid $light;
+                    }
+                }
+
+                &:nth-child(3) {
+                    a {
+                        span {
+                            background: $grn;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .user-profile {
+        @include m.df(space-between);
+
+        .media {
+            align-items: center;
+
+            img {
+                width: 3rem;
+                height: 3rem;
+                border-radius: 0.675rem;
+                margin-right: 1rem;
+            }
+
+            h6 {
+                @include m.para(1.15rem, 500, $c171B1E);
+            }
+
+            p {
+                @include m.para(0.75rem, 400, $c717579);
+            }
+        }
+
+        .language-box {
+            margin-left: 1rem;
+            position: relative;
+
+            select {
+                border: 1px solid $c717579;
+                padding: .5rem 1.8rem;
+                border-radius: 0.675rem;
+                background-color: transparent;
+                appearance: none;
+                padding-right: 2.5rem;
+            }
+
+            i {
+                position: absolute;
+                right: 0.5rem;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
+    }
+
+}
+
+// mobile user 
+.user-avatar {
+    text-align: right;
+    @include m.df;
+    a.avatar{
+        display: inline-block;
+        img {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+    }
+    a#mobile-menu-toggle{
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 1rem;
+        width: 2.2rem;
+        height: 2.2rem;
+        border-radius: 6px;
+        background: #FFD43C;
+        i{
+            font-size: 1.3rem;
+            color: $c1D3573;
+        }
+    }
+}
+
+// regular css @e
+
+
+// ======= responsive css @s
+// small phone device
+@include q.responsive(phone) {
+    .header-part {
+        padding: 0.9rem;
+
+        .header-title {
+            @include m.df(space-between);
+            h3{
+                font-size: 1.5rem;
+            }
+        } 
+    } 
+
+}
+
+// landscape phone device 
+@include q.responsive(landphone) {
+    .header-part {
+        padding: 0.9rem;
+
+        .header-title {
+            @include m.df(space-between); 
+        } 
+    } 
+}
+
+// tablet device 
+@include q.responsive(tablet) {
+    .header-part {
+        padding: 0.9rem;
+
+        .header-title {
+            @include m.df(space-between); 
+        } 
+    } 
+}
+
+// tablet device 
+@include q.responsive(landtablet) {}
+
+// tablet device 
+@include q.responsive(regular) {}
+
+// ======= responsive css @e

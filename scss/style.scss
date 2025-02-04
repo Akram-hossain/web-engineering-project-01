@@ -1,0 +1,103 @@
+@forward './base/index';
+@use './util/index' as m;
+@use './util/variabls' as v;
+@use './util/media-query' as q;
+
+// variable 
+$light: v.$light;
+$dark: v.$dark;
+$c1D3573: v.$c1D3573;
+$cFFD43C: v.$cFFD43C;
+$c171B1E: v.$c171B1E;
+$c717579: v.$c717579;
+$bxs: v.$bxs;
+$cEEEEEE: v.$cEEEEEE;
+$cd7d7d7: v.$cd7d7d7;
+$grn: v.$grn;
+
+// regular css @s
+.full-page-wrapper{
+    width: 100%;
+    display: block; 
+} 
+
+.common-page-wrap{
+    padding: 2rem;
+}
+
+.page-body-wrapper{
+    padding-left: 18rem;
+    transition:  all linear .2s;
+}
+
+.page-body-wrapper.expanded-body{
+    padding-left: 6rem;
+    transition:  all linear .2s;
+}
+
+.common-bttn{
+    @include m.button(1.1rem,$light,$c1D3573);
+    text-transform: capitalize;
+    font-weight: 500;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    transition: all linear .3s;
+    &:hover{
+        background-color: $cFFD43C;
+        color: $c1D3573;
+    }
+}
+// regular css @e
+
+// ======= responsive css @s
+// small phone device
+@include q.responsive(phone){
+    .page-body-wrapper{
+        padding-left: 0rem; 
+    }
+    .common-page-wrap{
+        padding: 1rem;
+    }
+
+    .common-bttn{
+        font-size: .9rem;
+        padding: .7rem .8rem;
+    }
+}
+
+// landscape phone device 
+@include q.responsive(landphone){
+    .page-body-wrapper{
+        padding-left: 0rem; 
+    }
+    .common-page-wrap{
+        padding: 1rem;
+    }
+
+    .common-bttn{
+        font-size: .9rem;
+        padding: .7rem .8rem;
+    }
+}
+
+// tablet device 
+@include q.responsive(tablet){
+    .page-body-wrapper{
+        padding-left: 0rem; 
+    } 
+    .common-page-wrap{
+        padding: 1.5rem;
+    }
+ 
+}
+@include q.responsive(landtablet){
+    .page-body-wrapper{
+        padding-left: 5rem!important; 
+    } 
+ 
+}
+@include q.responsive(regular){
+    
+}
+
+// ======= responsive css @e

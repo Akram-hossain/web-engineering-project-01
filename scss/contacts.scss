@@ -1,0 +1,255 @@
+@use './util/index' as m;
+@use './util/variabls' as v;
+@use './util/media-query' as q;
+
+// variable  
+$light: v.$light;
+$dark: v.$dark;
+$c1D3573: v.$c1D3573;
+$cFFD43C: v.$cFFD43C;
+$c171B1E: v.$c171B1E;
+$c717579: v.$c717579;
+$bxs: v.$bxs;
+$cEEEEEE: v.$cEEEEEE;
+$cd7d7d7: v.$cd7d7d7;
+$grn: v.$grn;
+
+// regular css @s
+.contacts-page-wrap {
+    .search-box {
+        position: relative;
+
+        .form-control {
+            background-color: $light;
+            border-radius: 0.675rem;
+            height: 3.25rem;
+            padding-left: 1rem;
+            padding-right: 2.5rem;
+            @include m.para(0.85rem, 400, $c1D3573);
+            border: 0;
+        }
+
+        i {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            color: $c717579;
+        }
+    }
+
+    .contacts-grid-view-bttn {
+        @include m.df(flex-end);
+
+        ul {
+            @include m.df;
+
+            li {
+                a {
+                    display: block;
+                    margin-left: 1.8rem;
+
+                    i {
+                        font-size: 1.6rem;
+                        color: $c717579;
+                    }
+
+                    &:hover {
+                        i {
+                            color: $c171B1E;
+                        }
+                    }
+                }
+
+                a.active {
+                    i {
+                        color: $c171B1E;
+                    }
+                }
+            }
+        }
+    }
+
+    .contact-box {
+        margin-top: 1.5rem;
+        @include m.box(1.5rem, $light);
+
+        .media {
+            align-items: center;
+
+            .avatar {
+                margin-right: 1rem;
+                position: relative;
+
+                i {
+                    position: absolute;
+                    right: 0;
+                    bottom: 0;
+                    font-size: 1rem;
+                    border: 4px solid $light;
+                    border-radius: 50%;
+                    color: $grn;
+                }
+
+                i.not-active {
+                    color: #D0412E;
+                }
+
+                img {
+                    width: 4.5rem;
+                    height: 4.5rem;
+                    border-radius: 0.675rem;
+                    object-fit: cover;
+                }
+            }
+
+            .media-body {
+                h5 {
+                    @include m.para(1.15rem, 600, $c171B1E);
+                }
+
+                p {
+                    @include m.para(0.9rem, 400, $c717579);
+                    margin: 0.2rem 0
+                }
+
+                a {
+                    @include m.para(0.9rem, 400, $c1D3573);
+                    display: block;
+                }
+            }
+        }
+    }
+
+    .contacts-pagination-box {
+        @include m.df(space-between);
+        margin-top: 1rem;
+
+        p {
+            @include m.para(1rem, 400, $c717579);
+        }
+
+        .pagination {
+            .page-item {
+                &:first-child {
+                    .page-link {
+                        margin-right: 1rem;
+                        border: 2px solid $c171B1E;
+                        border-radius: 0.675rem;
+                        background-color: transparent;
+                    }
+                }
+
+                &:last-child {
+                    .page-link {
+                        margin-left: 1rem;
+                        border: 2px solid $c171B1E;
+                        border-radius: 0.675rem;
+                        background-color: transparent;
+                    }
+                }
+
+                &:nth-child(4) {
+                    .page-link {
+                        border-right: 2px solid $c171B1E;
+                        border-radius: 0 10px 10px 0;
+                    }
+                }
+
+                &:nth-child(2) {
+                    .page-link {
+                        border-left: 2px solid $c171B1E;
+                        border-radius: 10px 0 0 10px;
+                    }
+                }
+
+                .page-link {
+                    @include m.para(1.15rem, 500, $c1D3573);
+                    background: #F1EAFF;
+                    border-top: 2px solid #1D3573;
+                    border-bottom: 2px solid #1D3573;
+                    border-radius: 0px;
+                    padding: 0.7rem 1rem;
+                }
+
+                .page-link.active {
+                    background-color: $c171B1E;
+                    color: $light;
+                }
+            }
+        }
+    }
+}
+
+// regular css @e
+
+
+// ======= responsive css @s
+// small phone device
+@include q.responsive(phone) {
+    .contacts-page-wrap {
+        .contacts-grid-view-bttn {
+            justify-content: flex-start;
+            margin-top: 1rem;
+        }
+
+        .contacts-pagination-box {
+            flex-direction: column;
+            align-items: flex-start;
+
+            p {
+                margin-bottom: 1rem;
+            }
+
+            .pagination {
+                margin-bottom: 1rem;
+
+                .page-item .page-link {
+                    font-size: .8rem !important;
+                }
+            }
+        }
+    }
+}
+
+// landscape phone device 
+@include q.responsive(landphone) {
+    .contacts-page-wrap {
+        .contacts-grid-view-bttn {
+            ul li a {
+                margin-left: 0.5rem;
+            }
+        }
+
+        .contacts-pagination-box {
+            .pagination {
+                .page-item .page-link {
+                    font-size: .8rem !important;
+                }
+            }
+        }
+    }
+    .contacts-page-wrap {
+        .contact-box {
+            padding: 1rem;
+        }
+    }
+}
+
+// tablet device 
+@include q.responsive(tablet) {
+    .contacts-page-wrap {
+        .contact-box {
+            padding: 1rem;
+        }
+    }
+}
+
+// tablet device 
+@include q.responsive(landtablet) {}
+
+// tablet device 
+@include q.responsive(regular) {}
+
+// ======= responsive css @e
