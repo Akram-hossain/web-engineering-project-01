@@ -39,10 +39,11 @@ Simply open the index.html file to view the dashboard locally.
 🖋️ Project Structure
 
 ├── dashboard.html
-├── css/
+├── assets/
+│   css
 │   └── styles.css
 ├── sass/
-│   ├── main.scss
+│   ├── style.scss
 │   ├── _variables.scss
 │   ├── _mixins.scss
 │   └── _components.scss
